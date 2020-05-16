@@ -9,7 +9,6 @@
     PS> Get-GnDlUrl 'https://gamesnostalgia.com/download/GAME_NAME_HERE/ID_NBR'
 
     Returns the download URL of the application 'GAME_NAME_HERE/ID_NBR'.
-	# ValidatePattern('^http:(?:\/){2}cdn.gamesnostalgia.com\/files(?:\/\w+){3}\/\w+.\w+$')
 
 .OUTPUTS
     [String] or $null
@@ -27,8 +26,10 @@ function Get-GnDlUrl {
 	}
 	End
     {
-		Write-Host $srcURL
-		$tokenURL = $(phantomjs.exe getUrl.js $srcURL)
+		# Write-Host $srcURL
+        $scriptRoot = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+        $jsScript = "$(Join-Path $scriptRoot getUrl.js)"
+		$tokenURL = $(phantomjs.exe $jsScript $srcURL)
 		return $tokenURL
 	}
 }
