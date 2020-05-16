@@ -26,10 +26,11 @@ function Get-GnDlUrl {
 	}
 	End
     {
-		# Write-Host $srcURL
-        $scriptRoot = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-        $jsScript = "$(Join-Path $scriptRoot getUrl.js)"
-		$tokenURL = $(phantomjs.exe $jsScript $srcURL)
+        # The following technique does not work because of unknown reason
+        # $scriptPath = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+        $extensionPath = [IO.Path]::Combine($ENV:ChocolateyInstall, 'extensions', 'gamesnostalgia')
+        $jsScript = "$(Join-Path $extensionPath 'getUrl.js')"
+		$tokenURL = "$(phantomjs.exe $jsScript $srcURL)"
 		return $tokenURL
 	}
 }

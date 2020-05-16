@@ -1,4 +1,4 @@
-$scriptRoot = Split-Path -Path $MyInvocation.MyCommand.Definition
+$scriptRoot = "$(Split-Path -Path $MyInvocation.MyCommand.Definition)"
 
 $publicFunctions = @(
     'Get-GnDlUrl'
