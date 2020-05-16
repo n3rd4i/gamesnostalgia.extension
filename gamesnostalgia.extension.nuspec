@@ -4,6 +4,7 @@
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>gamesnostalgia.extension</id>
     <version>0.1.0</version>
+    <!-- <packageSourceUrl>https://github.com/n3rd4i/gamesnostalgia.extension</packageSourceUrl> -->
     <owners>n3rd4i</owners>
     <!-- ============================== -->
 
